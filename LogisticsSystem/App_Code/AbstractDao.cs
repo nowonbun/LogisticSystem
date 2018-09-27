@@ -107,11 +107,12 @@ namespace LogisticsSystem.App_Code
         protected dynamic SelectCount(String query, MySqlParameter[] para = null)
         {
             DataTable ret = SelectDataTable(query, para);
+            DataRow[] rows = ret.Select();
             if (ret.Rows.Count < 1)
             {
                 return 0;
             }
-            return ret.Rows[0][0];
+            return Int32.Parse(ret.Rows[0][0].ToString());
         }
 
         protected DataTable SelectDataTable(String query, MySqlParameter[] para = null)

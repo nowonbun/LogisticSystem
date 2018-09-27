@@ -15,6 +15,7 @@ namespace LogisticsSystem.Dao
         {
             String query = " insert into codeCreater select Cast(isnull(Max(codebuffer)+1,1) as Decimal) as code,1 from codeCreater where type=1";
             Delete(query);
+            //Insert(query);
             query = " select Cast(Max(codebuffer)as Decimal) as code from codeCreater where type=1 ";
             DataTable dt = SelectDataTable(query);
             if (dt.Rows.Count < 1)
