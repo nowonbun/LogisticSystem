@@ -1,0 +1,12 @@
+git add <FileName> or git add *
+
+git commit -m "comment"
+
+git push origin master
+
+
+ditogold242@gmail.com as ID
+jaehoon899? or jaehoon89? as pw
+
+Be sure to close visual studio 2015 working on current solution(project)
+when push the current sources to github repsitory

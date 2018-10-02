@@ -207,6 +207,7 @@
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\Cargo.cs" />
+    <Compile Include="Models\CodeCreator.cs" />
     <Compile Include="Models\CodeMaster.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\CompanyInfo.cs" />
