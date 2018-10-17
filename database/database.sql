@@ -105,3 +105,38 @@ CREATE TABLE logisticsystem.tbl_codemaster (
   codeBuffer decimal(5,0) DEFAULT 0,
   type char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE logisticsystem.tbl_Customer (
+  idx bigint auto_increment primary key,
+  customercode varchar(100),
+  customerType char(1),
+  customerName nvarchar(100),
+  customerRepresetitive nvarchar(100),
+  customerSecurityNumber varchar(100),
+  customerNumber varchar(30),
+  customerFax varchar(30),
+  customerPostNumber varchar(10),
+  customerAddress nvarchar(255),
+  customerEmail varchar(100),
+  customerTaxViewRepresentative nvarchar(100),
+  customerTaxViewerAddress nvarchar(255),
+  customerTaxViewerPostNumber varchar(10),
+  customerPaymentMethod char(1),
+  customerAccountbank nvarchar(255),
+  customerAccountbankcode varchar(100),
+  customerAccountbankcodename nvarchar(255),
+  customerAccountOwnerName nvarchar(255),
+  customerAccountNumber varchar(255),
+  customerTaxType char(1),
+  customerTax int,
+  customerGrade int,
+  customerRepressent nvarchar(255),
+  customerRepressentNumber varchar(30),
+  other text,
+  createdate datetime,
+  creater nvarchar(30),
+  state char(1),
+  companycode varchar(10)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
