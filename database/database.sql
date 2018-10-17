@@ -1,3 +1,8 @@
+DROP DATABASE logisticsystem;
+CREATE DATABASE logisticsystem;
+-- ON DELETE CASCADE ON UPDATE RESTRICT
+USE logisticsystem;
+
 CREATE TABLE logisticsystem.tbl_companyinfo (
   idx bigint auto_increment primary key,
   companyCode varchar(10) NOT NULL,
@@ -53,4 +58,50 @@ CREATE TABLE logisticsystem.tbl_connect (
   state char(1) DEFAULT NULL,
   language char(1) DEFAULT NULL,
   ipAddress varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE logisticsystem.tbl_productinfo (
+  idx bigint auto_increment primary key,
+  productCode varchar(100) NOT NULL,
+  productName nvarchar(100) NOT NULL,
+  productType int DEFAULT 0,
+  productSpec int DEFAULT 0,
+  productTax int DEFAULT 0,
+  productAcquirer nvarchar(100) DEFAULT NULL,
+  productManufacturer nvarchar(100) DEFAULT NULL,
+  productCost decimal(15,0) DEFAULT NULL,
+  productCostNotTax decimal(15,0) DEFAULT NULL,
+  productCostTax decimal(15,0) DEFAULT NULL,
+  productFactoryPrice decimal(15,0) DEFAULT NULL,
+  productFactoryPriceNotTax decimal(15,0) DEFAULT NULL,
+  productFactoryPriceTax decimal(15,0) DEFAULT NULL,
+  productRetailPrice decimal(15,0) DEFAULT NULL,
+  productRetailPriceNotTax decimal(15,0) DEFAULT NULL,
+  productRetailPriceTax decimal(15,0) DEFAULT NULL,
+  productPrice decimal(15,0) DEFAULT NULL,
+  productPriceNotTax decimal(15,0) DEFAULT NULL,
+  productPriceTax decimal(15,0) DEFAULT NULL,
+  barcode varchar(255) DEFAULT NULL,
+  QRcode varchar(255) DEFAULT NULL,
+  other text DEFAULT NULL,
+  createdate datetime DEFAULT NULL,
+  creator nvarchar(255) DEFAULT NULL,
+  state char(1) DEFAULT NULL,
+  companyCode varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE logisticsystem.tbl_codemaster (
+  tblName varchar(255) DEFAULT NULL,
+  codeKey char(1) DEFAULT NULL,
+  codeName_k varchar(255) DEFAULT NULL,
+  codeName_j varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE logisticsystem.tbl_codemaster (
+  code decimal(5,0) DEFAULT 0,
+  codeBuffer decimal(5,0) DEFAULT 0,
+  type char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
