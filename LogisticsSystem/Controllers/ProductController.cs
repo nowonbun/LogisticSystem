@@ -129,7 +129,7 @@ namespace LogisticsSystem.Controllers
                 return Content(ret);
             }
             data.ProductCode = "GC-" + data.ProductCode;
-            data.Creater = User.Identity.Name;
+            data.Creator = User.Identity.Name;
             data.CreateDate = DateTime.Now;
             data.State = "0";
             data.CompanyCode = CompanySession.CompanyCode;

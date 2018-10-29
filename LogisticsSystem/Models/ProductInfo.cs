@@ -33,7 +33,7 @@ namespace LogisticsSystem.Models
         private String qrcode;
         private String other;
         private DateTime createdate;
-        private String creater;
+        private String creator;
         private String state;
         private String companycode;
 
@@ -170,10 +170,10 @@ namespace LogisticsSystem.Models
         {
             get { return createdate.ToString("yyyy-MM-dd"); }
         }
-        public String Creater
+        public String Creator
         {
-            get { return creater; }
-            set { creater = value; }
+            get { return creator; }
+            set { creator = value; }
         }
         public String State
         {

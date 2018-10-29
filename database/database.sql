@@ -3,8 +3,8 @@ CREATE DATABASE logisticsystem;
 -- ON DELETE CASCADE ON UPDATE RESTRICT
 USE logisticsystem;
 
-CREATE TABLE logisticsystem.tbl_companyinfo (
-  idx bigint auto_increment primary key,
+CREATE TABLE logisticsystem.tbl_CompanyInfo (
+  idx bigint NOT NULL,
   companyCode varchar(10) NOT NULL,
   companyName nvarchar(100) NOT NULL,
   companyAddress nvarchar(255) DEFAULT NULL,
@@ -32,11 +32,12 @@ CREATE TABLE logisticsystem.tbl_companyinfo (
   orderAddress_en varchar(255) DEFAULT NULL,
   companyNumberType varchar(30) DEFAULT NULL,
   companyFaxType varchar(30) DEFAULT NULL,
-  companyRepresentativeNumber varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  companyRepresentativeNumber varchar(100) DEFAULT NULL,
+  primary key(idx, companyCode, companyName)
+)
 
-CREATE TABLE logisticsystem.tbl_userinfo (
-  idx bigint auto_increment primary key,
+CREATE TABLE logisticsystem.tbl_UserInfo (
+  idx bigint NOT NULL,
   userId varchar(255) NOT NULL,
   password varchar(255) NOT NULL,
   userName nvarchar(255) NOT NULL,
@@ -49,20 +50,28 @@ CREATE TABLE logisticsystem.tbl_userinfo (
   creator nvarchar(255) DEFAULT NULL,
   companyCode varchar(10) DEFAULT NULL,
   userName_en varchar(255) DEFAULT NULL,
-  userNumberType varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  userNumberType varchar(30) DEFAULT NULL,
+  primary key(idx, userId, password, userName)
+  foreign key(companyCode) REFERENCES logisticsystem.tbl_companyinfo(companyCode) ON DELETE CASCADE
+)
 
-CREATE TABLE logisticsystem.tbl_connect (
+CREATE TABLE logisticsystem.tbl_CodeCreator (
+	code decimal(5,0),
+	codeBuffer decimal(5,0),
+	type char(1) DEFAULT NULL
+)
+
+CREATE TABLE logisticsystem.tbl_Connect (
   userId varchar(255) DEFAULT NULL,
   connectDate datetime DEFAULT NULL,
   state char(1) DEFAULT NULL,
   language char(1) DEFAULT NULL,
   ipAddress varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+)
 
 
-CREATE TABLE logisticsystem.tbl_productinfo (
-  idx bigint auto_increment primary key,
+CREATE TABLE logisticsystem.tbl_ProductInfo (
+  idx bigint auto_increment,
   productCode varchar(100) NOT NULL,
   productName nvarchar(100) NOT NULL,
   productType int DEFAULT 0,
@@ -88,27 +97,21 @@ CREATE TABLE logisticsystem.tbl_productinfo (
   createdate datetime DEFAULT NULL,
   creator nvarchar(255) DEFAULT NULL,
   state char(1) DEFAULT NULL,
-  companyCode varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  companyCode varchar(10) DEFAULT NULL,
+  primary key(idx, productCode, productName)
+  foreign key(companyCode) REFERENCES logisticsystem.tbl_companyinfo(companyCode) ON DELETE CASCADE
+)
 
 
-CREATE TABLE logisticsystem.tbl_codemaster (
+CREATE TABLE logisticsystem.tbl_CodeMaster (
   tblName varchar(255) DEFAULT NULL,
   codeKey char(1) DEFAULT NULL,
   codeName_k varchar(255) DEFAULT NULL,
   codeName_j varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
-CREATE TABLE logisticsystem.tbl_codemaster (
-  code decimal(5,0) DEFAULT 0,
-  codeBuffer decimal(5,0) DEFAULT 0,
-  type char(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+)
 
 CREATE TABLE logisticsystem.tbl_Customer (
-  idx bigint auto_increment primary key,
+  idx bigint auto_increment,
   customercode varchar(100),
   customerType char(1),
   customerName nvarchar(100),
@@ -137,6 +140,7 @@ CREATE TABLE logisticsystem.tbl_Customer (
   createdate datetime,
   creater nvarchar(30),
   state char(1),
-  companycode varchar(10)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  companycode varchar(10),
+  primary key(idx)
+)
 

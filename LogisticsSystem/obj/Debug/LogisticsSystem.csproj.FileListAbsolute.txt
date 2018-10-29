@@ -129,6 +129,5 @@ C:\Users\JAEHOON SEOG\Desktop\WorkFile\LogisticsSystem\LogisticsSystem\bin\ko\Sy
 C:\Users\JAEHOON SEOG\Desktop\WorkFile\LogisticsSystem\LogisticsSystem\bin\ko\System.Net.Http.Formatting.resources.dll
 C:\Users\JAEHOON SEOG\Desktop\WorkFile\LogisticsSystem\LogisticsSystem\bin\ko\System.Web.Http.resources.dll
 C:\Users\JAEHOON SEOG\Desktop\WorkFile\LogisticsSystem\LogisticsSystem\bin\ko\System.Web.Http.WebHost.resources.dll
-C:\Users\JAEHOON SEOG\Desktop\WorkFile\LogisticsSystem\LogisticsSystem\obj\Debug\LogisticsSystem.csprojResolveAssemblyReference.cache
 C:\Users\JAEHOON SEOG\Desktop\WorkFile\LogisticsSystem\LogisticsSystem\obj\Debug\LogisticsSystem.dll
 C:\Users\JAEHOON SEOG\Desktop\WorkFile\LogisticsSystem\LogisticsSystem\obj\Debug\LogisticsSystem.pdb
