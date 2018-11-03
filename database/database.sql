@@ -5,7 +5,7 @@ USE logisticsystem;
 
 CREATE TABLE logisticsystem.tbl_CompanyInfo (
   idx bigint NOT NULL,
-  companyCode varchar(10) NOT NULL,
+  companyCode varchar(10) unique NOT NULL,
   companyName nvarchar(100) NOT NULL,
   companyAddress nvarchar(255) DEFAULT NULL,
   companyPostNumber varchar(10) DEFAULT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE logisticsystem.tbl_CompanyInfo (
   companyFaxType varchar(30) DEFAULT NULL,
   companyRepresentativeNumber varchar(100) DEFAULT NULL,
   primary key(idx, companyCode, companyName)
-)
+);
 
 CREATE TABLE logisticsystem.tbl_UserInfo (
   idx bigint NOT NULL,
@@ -48,18 +48,18 @@ CREATE TABLE logisticsystem.tbl_UserInfo (
   userIncidentDay datetime DEFAULT NULL,
   createdate datetime DEFAULT NULL,
   creator nvarchar(255) DEFAULT NULL,
-  companyCode varchar(10) DEFAULT NULL,
+  companyCode varchar(10) NOT NULL,
   userName_en varchar(255) DEFAULT NULL,
   userNumberType varchar(30) DEFAULT NULL,
-  primary key(idx, userId, password, userName)
+  primary key(idx, userId, password, userName),
   foreign key(companyCode) REFERENCES logisticsystem.tbl_companyinfo(companyCode) ON DELETE CASCADE
-)
+);
 
 CREATE TABLE logisticsystem.tbl_CodeCreator (
 	code decimal(5,0),
 	codeBuffer decimal(5,0),
 	type char(1) DEFAULT NULL
-)
+);
 
 CREATE TABLE logisticsystem.tbl_Connect (
   userId varchar(255) DEFAULT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE logisticsystem.tbl_Connect (
   state char(1) DEFAULT NULL,
   language char(1) DEFAULT NULL,
   ipAddress varchar(50) DEFAULT NULL
-)
+);
 
 
 CREATE TABLE logisticsystem.tbl_ProductInfo (
@@ -98,9 +98,9 @@ CREATE TABLE logisticsystem.tbl_ProductInfo (
   creator nvarchar(255) DEFAULT NULL,
   state char(1) DEFAULT NULL,
   companyCode varchar(10) DEFAULT NULL,
-  primary key(idx, productCode, productName)
+  primary key(idx, productCode, productName),
   foreign key(companyCode) REFERENCES logisticsystem.tbl_companyinfo(companyCode) ON DELETE CASCADE
-)
+);
 
 
 CREATE TABLE logisticsystem.tbl_CodeMaster (
@@ -108,39 +108,40 @@ CREATE TABLE logisticsystem.tbl_CodeMaster (
   codeKey char(1) DEFAULT NULL,
   codeName_k varchar(255) DEFAULT NULL,
   codeName_j varchar(255) DEFAULT NULL
-)
+);
 
 CREATE TABLE logisticsystem.tbl_Customer (
   idx bigint auto_increment,
-  customercode varchar(100),
-  customerType char(1),
-  customerName nvarchar(100),
-  customerRepresetitive nvarchar(100),
-  customerSecurityNumber varchar(100),
-  customerNumber varchar(30),
-  customerFax varchar(30),
-  customerPostNumber varchar(10),
-  customerAddress nvarchar(255),
-  customerEmail varchar(100),
-  customerTaxViewRepresentative nvarchar(100),
-  customerTaxViewerAddress nvarchar(255),
-  customerTaxViewerPostNumber varchar(10),
-  customerPaymentMethod char(1),
-  customerAccountbank nvarchar(255),
-  customerAccountbankcode varchar(100),
-  customerAccountbankcodename nvarchar(255),
-  customerAccountOwnerName nvarchar(255),
-  customerAccountNumber varchar(255),
-  customerTaxType char(1),
-  customerTax int,
-  customerGrade int,
-  customerRepressent nvarchar(255),
-  customerRepressentNumber varchar(30),
-  other text,
-  createdate datetime,
-  creater nvarchar(30),
-  state char(1),
-  companycode varchar(10),
-  primary key(idx)
-)
+  customerCode varchar(100) NOT NULL,
+  customerType char(1) NOT NULL,
+  customerName nvarchar(100) NOT NULL,
+  customerRepresetitive nvarchar(100) DEFAULT NULL,
+  customerSecurityNumber varchar(100) DEFAULT NULL,
+  customerNumber varchar(30) DEFAULT NULL,
+  customerFax varchar(30) DEFAULT NULL,
+  customerPostNumber varchar(10) DEFAULT NULL,
+  customerAddress nvarchar(255) DEFAULT NULL,
+  customerEmail varchar(100) DEFAULT NULL,
+  customerTaxViewRepresentative nvarchar(100) DEFAULT NULL,
+  customerTaxViewerAddress nvarchar(255) DEFAULT NULL,
+  customerTaxViewerPostNumber varchar(10) DEFAULT NULL,
+  customerPaymentMethod char(1) DEFAULT NULL,
+  customerAccountbank nvarchar(255) DEFAULT NULL,
+  customerAccountbankcode varchar(100) DEFAULT NULL,
+  customerAccountbankcodename nvarchar(255) DEFAULT NULL,
+  customerAccountOwnerName nvarchar(255) DEFAULT NULL,
+  customerAccountNumber varchar(255) DEFAULT NULL,
+  customerTaxType char(1) DEFAULT NULL,
+  customerTax int DEFAULT 0,
+  customerGrade int DEFAULT 0,
+  customerRepressent nvarchar(255) DEFAULT NULL,
+  customerRepressentNumber varchar(30) DEFAULT NULL,
+  other text DEFAULT NULL,
+  createdate datetime DEFAULT NULL,
+  creater nvarchar(30) DEFAULT NULL,
+  state char(1) NOT NULL,
+  companycode varchar(10) NOT NULL,
+  primary key(idx, customerCode, customerType, customerName),
+  foreign key(companyCode) REFERENCES logisticsystem.tbl_companyinfo(companyCode) ON DELETE CASCADE
+);
 

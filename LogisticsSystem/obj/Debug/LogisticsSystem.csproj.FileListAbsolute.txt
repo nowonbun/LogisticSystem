@@ -131,3 +131,4 @@ C:\Users\JAEHOON SEOG\Desktop\WorkFile\LogisticsSystem\LogisticsSystem\bin\ko\Sy
 C:\Users\JAEHOON SEOG\Desktop\WorkFile\LogisticsSystem\LogisticsSystem\bin\ko\System.Web.Http.WebHost.resources.dll
 C:\Users\JAEHOON SEOG\Desktop\WorkFile\LogisticsSystem\LogisticsSystem\obj\Debug\LogisticsSystem.dll
 C:\Users\JAEHOON SEOG\Desktop\WorkFile\LogisticsSystem\LogisticsSystem\obj\Debug\LogisticsSystem.pdb
+C:\Users\JAEHOON SEOG\Desktop\WorkFile\LogisticsSystem\LogisticsSystem\obj\Debug\LogisticsSystem.csprojResolveAssemblyReference.cache
