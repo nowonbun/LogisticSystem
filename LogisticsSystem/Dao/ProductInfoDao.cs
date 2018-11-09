@@ -13,9 +13,11 @@ namespace LogisticsSystem.Dao
     {
         public String CreateCode()
         {
-            String query = " insert into tbl_CodeCreator select Cast(ifnull(Max(codebuffer)+1,1) as Decimal) as code, codebuffer,1 from tbl_CodeCreator where type=1";
+            //String query = " insert into tbl_CodeCreator select Cast(ifnull(Max(codebuffer)+1,1) as Decimal) as code, codebuffer,1 from tbl_CodeCreator where type=1";
+            String query = " insert into tbl_CodeCreator select 	Cast(ifnull(Max(codebuffer)+1,1) as Decimal) as code, 	Cast(ifnull(Max(code) + 1,1) as Decimal) as codebuffer,	1 from tbl_CodeCreator where type=1";
             Delete(query);
-            query = " select Cast(Max(codebuffer)as Decimal) as code from tbl_CodeCreator where type=1 ";
+            //query = " select Cast(Max(codebuffer)as Decimal) as code from tbl_CodeCreator where type=1 ";
+            query = " select Cast(Max(code)as Decimal) as code from tbl_CodeCreator where type=1 ";
             DataTable dt = SelectDataTable(query);
             if (dt.Rows.Count < 1)
             {
